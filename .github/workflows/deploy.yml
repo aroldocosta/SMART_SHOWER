@@ -21,5 +21,5 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: 22
           source: "smartshower/*"
-          target: "/home/oficinabr/site/home"
+          target: "/home/oficinabr/site/smartshower"
           strip_components: 1
