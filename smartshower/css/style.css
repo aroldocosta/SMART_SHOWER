@@ -1281,7 +1281,7 @@ section {
     font-size: 3rem;
     font-weight: 800;
     color: #1e293b;
-    font-family: 'Outfit', sans-serif;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     margin-bottom: 5px;
 }
 
@@ -1312,9 +1312,16 @@ section {
 }
 
 .result-card-profit .result-value {
-    font-size: 2.2rem;
+    font-size: 1.54rem;
+    /* Reduzido para 70% de 2.2rem para melhor hierarquia */
     font-weight: 800;
     color: #fff;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+.negative {
+    color: #ff3b3b !important;
+    /* Vermelho vibrante para valores negativos */
 }
 
 .calculator-footer-note {
@@ -1343,12 +1350,13 @@ section {
     max-width: 100%;
 }
 
-.number-input-wrapper input[type="number"] {
+.number-input-wrapper input {
     border: none !important;
     border-left: 1px solid #e2e8f0 !important;
     border-right: 1px solid #e2e8f0 !important;
     text-align: center;
     font-weight: 700;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     padding: 15px 10px !important;
     flex-grow: 1;
     min-width: 100px;

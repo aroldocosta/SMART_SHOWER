@@ -116,10 +116,19 @@ document.addEventListener('DOMContentLoaded', () => {
         const monthlyProfit = 30 * dailyProfit;
         const monthlyRevenue = banhistas * valorSugerido * 30;
 
-        // Update UI
-        if (revenueDisplay) revenueDisplay.innerText = monthlyRevenue.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-        if (dailyProfitDisplay) dailyProfitDisplay.innerText = dailyProfit.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-        if (profitDisplay) profitDisplay.innerText = monthlyProfit.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+        // Update UI with color feedback for losses
+        if (revenueDisplay) {
+            revenueDisplay.innerText = monthlyRevenue.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+            revenueDisplay.classList.toggle('negative', monthlyRevenue < 0);
+        }
+        if (dailyProfitDisplay) {
+            dailyProfitDisplay.innerText = dailyProfit.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+            dailyProfitDisplay.classList.toggle('negative', dailyProfit < 0);
+        }
+        if (profitDisplay) {
+            profitDisplay.innerText = monthlyProfit.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+            profitDisplay.classList.toggle('negative', monthlyProfit < 0);
+        }
     }
 
     // Custom UI buttons for +/- (While-pressed support)
