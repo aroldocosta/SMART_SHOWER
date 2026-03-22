@@ -235,7 +235,28 @@
                                 </div>
                             </div>
                             <div class="input-group">
-                                <label for="valor-metro-cubico">Custo m³ Agua(R$):</label>
+                                <label for="categoria-tarifa">Categoria de Tarifa (Cagece):</label>
+                                <div class="select-wrapper">
+                                    <select id="categoria-tarifa">
+                                        <option value="comercial-2" selected>Comercial II</option>
+                                        <option value="comercial-popular">Comercial Popular</option>
+                                        <option value="manual">Ajuste Manual</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="input-group" id="faixa-consumo-group">
+                                <label class="toggle-label">
+                                    <span>Consumo mensal > 50m³?</span>
+                                    <div class="toggle-switch">
+                                        <input type="checkbox" id="faixa-consumo">
+                                        <span class="slider"></span>
+                                    </div>
+                                </label>
+                            </div>
+
+                            <div class="input-group" id="manual-cost-group" style="display: none;">
+                                <label for="valor-metro-cubico">Custo m³ Água (R$):</label>
                                 <div class="number-input-wrapper">
                                     <button type="button" class="ctrl-btn minus"
                                         data-target="valor-metro-cubico">−</button>
@@ -270,8 +291,8 @@
                                 <p style="margin-bottom: 10px; color: #1e293b;"><strong>Observações:</strong></p>
                                 <p style="margin-bottom: 8px;">1 - Estimativa para banhos de 1 minuto com vazão media de
                                     12 litros/min</p>
-                                <p>2 - Lucro Dia e Lucro Mes já estão descontados do custo do metro cubico da água e as
-                                    taxas de serviço, é valor liquido na sua mão!</p>
+                                <p>2 - Lucro Dia e Lucro Mes já estão descontados do custo do metro cubico da água e a
+                                    taxa de 30% (SaaS + Gateway Bancário), é valor liquido na sua mão!</p>
                             </div>
                         </div>
                     </div>
@@ -309,6 +330,39 @@
                         <div class="ui-table-pague-container" data-reveal="fade">
                             <img src="img/payout_example.png" alt="Histórico de Saques PaguePix"
                                 style="width: 100%; display: block; border-radius: 20px;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Us Section -->
+        <section id="about" class="about">
+            <div class="container">
+                <div class="about-grid">
+                    <div class="about-content" data-reveal="left">
+                        <h2 class="section-header">Quem <span>Somos</span></h2>
+                        <p>A SmartShower nasceu da necessidade de otimizar recursos naturais e financeiros em ambientes
+                            de alto fluxo, como as barracas do litoral cearense. Somos uma equipe de engenharia e
+                            tecnologia focada em soluções IoT práticas.</p>
+                        <p>Nosso propósito é simples: eliminar o desperdício invisível e criar novas oportunidades de
+                            receita passiva para empreendedores locais, utilizando tecnologia 100% brasileira e suporte
+                            técnico regional.</p>
+                        <div class="about-stats">
+                            <div class="about-stat">
+                                <strong>100%</strong>
+                                <span>Tecnologia Nacional</span>
+                            </div>
+                            <div class="about-stat">
+                                <strong>24/7</strong>
+                                <span>Monitoramento</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-image" data-reveal="right">
+                        <div class="image-box shadow-premium">
+                            <img src="img/team_work.png" alt="Equipe SmartShower"
+                                style="width: 100%; border-radius: 20px;">
                         </div>
                     </div>
                 </div>
@@ -395,7 +449,7 @@
             <div class="footer-contact">
                 <h4>Contato</h4>
                 <p><i class="fab fa-whatsapp"></i> (85) 99135-1205</p>
-                <p><i class="fas fa-envelope"></i> aroldocosta@yahoo.com.br</p>
+                <p><i class="fas fa-envelope"></i> contato@oficinabr.com</p>
             </div>
         </div>
         <div class="footer-bottom container">

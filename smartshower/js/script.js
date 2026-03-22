@@ -84,9 +84,25 @@ document.addEventListener('DOMContentLoaded', () => {
     const banhistasInput = document.getElementById('banhistas-dia');
     const valorInput = document.getElementById('valor-banho');
     const metroCubicoInput = document.getElementById('valor-metro-cubico');
+    const categoriaSelect = document.getElementById('categoria-tarifa');
+    const faixaCheckbox = document.getElementById('faixa-consumo');
+    const manualGroup = document.getElementById('manual-cost-group');
+    const faixaGroup = document.getElementById('faixa-consumo-group');
+
     const revenueDisplay = document.getElementById('total-revenue');
     const dailyProfitDisplay = document.getElementById('daily-profit');
     const profitDisplay = document.getElementById('total-profit');
+
+    const TARIFFS = {
+        'comercial-2': {
+            'base': 35.75, // 0-50m3
+            'extra': 56.55  // >50m3
+        },
+        'comercial-popular': {
+            'base': 30.22, // 21-50m3
+            'extra': 53.86  // >50m3
+        }
+    };
 
     // BRL Formatting Helpers
     const parseFormattedValue = (val) => {
@@ -98,6 +114,27 @@ document.addEventListener('DOMContentLoaded', () => {
         return val.toFixed(decimals).replace('.', ',');
     };
 
+    function updateWaterCost() {
+        if (!categoriaSelect || !faixaCheckbox || !metroCubicoInput) return;
+
+        const categoria = categoriaSelect.value;
+        const isExtra = faixaCheckbox.checked;
+
+        if (categoria === 'manual') {
+            if (manualGroup) manualGroup.style.display = 'block';
+            if (faixaGroup) faixaGroup.style.display = 'none';
+        } else {
+            if (manualGroup) manualGroup.style.display = 'none';
+            if (faixaGroup) faixaGroup.style.display = 'block';
+            const cost = isExtra ? TARIFFS[categoria].extra : TARIFFS[categoria].base;
+            metroCubicoInput.value = cost.toFixed(2).replace('.', ',');
+        }
+        calculateROI();
+    }
+
+    if (categoriaSelect) categoriaSelect.addEventListener('change', updateWaterCost);
+    if (faixaCheckbox) faixaCheckbox.addEventListener('change', updateWaterCost);
+
     function calculateROI() {
         if (!banhistasInput || !valorInput || !metroCubicoInput) return;
 
@@ -108,8 +145,8 @@ document.addEventListener('DOMContentLoaded', () => {
         // Custo da Água (12L por m³ / 1000)
         const custoAgua = (12 * valorMetroCubico) / 1000;
 
-        // Lucro por minuto (Preço Sugerido - Custo da Água) - 25% PaguePix - 1% Taxa
-        const lucroPorMinuto = (valorSugerido - custoAgua) - (valorSugerido * 0.25) - (valorSugerido * 0.01);
+        // Lucro por minuto (Preço Sugerido - Custo da Água) - 30% Retenção (SaaS + Gateway)
+        const lucroPorMinuto = (valorSugerido - custoAgua) - (valorSugerido * 0.30);
 
         // Resultados
         const dailyProfit = banhistas * lucroPorMinuto;
@@ -213,6 +250,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Initial run
+    updateWaterCost();
     calculateROI();
 });
 
