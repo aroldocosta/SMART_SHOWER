@@ -873,7 +873,7 @@ section {
 }
 
 .result-value {
-    font-size: 2.2rem;
+    font-size: 1.8rem;
     font-weight: 800;
     font-family: 'Outfit', sans-serif;
 }
@@ -1233,4 +1233,157 @@ section {
     .dashboard-features li {
         text-align: left;
     }
+}
+
+/* ROI CALCULATOR REBUILD - REFERENCE IMAGE MATCH */
+.roi-calculator .calculator-body {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.roi-calculator .input-group label {
+    color: #1e3a8a;
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+}
+
+.roi-calculator .input-group input {
+    border: 1px solid #e2e8f0;
+    padding: 18px;
+    font-size: 1.2rem;
+    color: #334155;
+    background: #fff;
+}
+
+.calculator-results-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.result-card-revenue {
+    background: #f8fdff;
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.result-card-revenue h3 {
+    color: #475569;
+    font-size: 1rem;
+    margin-bottom: 15px;
+}
+
+.result-value-large {
+    font-size: 3rem;
+    font-weight: 800;
+    color: #1e293b;
+    font-family: 'Outfit', sans-serif;
+    margin-bottom: 5px;
+}
+
+.result-card-revenue p {
+    color: #64748b;
+    font-size: 0.95rem;
+}
+
+.result-grid-profit {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.result-card-profit {
+    background: #008080;
+    color: #fff;
+    padding: 25px;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.result-card-profit h3 {
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    opacity: 0.9;
+}
+
+.result-card-profit .result-value {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #fff;
+}
+
+.calculator-footer-note {
+    margin-top: 10px;
+    font-size: 1.2rem;
+    /* Aumentado em 50% */
+    color: #64748b;
+    line-height: 1.5;
+}
+
+@media (max-width: 991px) {
+    .roi-calculator .calculator-body {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+}
+
+/* CUSTOM NUMBER INPUTS STYLE */
+.number-input-wrapper {
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    overflow: hidden;
+    max-width: 100%;
+}
+
+.number-input-wrapper input[type="number"] {
+    border: none !important;
+    text-align: center;
+    font-weight: 700;
+    padding: 15px 5px !important;
+    max-width: 80px !important;
+    margin: 0 !important;
+    -moz-appearance: textfield;
+}
+
+.number-input-wrapper input::-webkit-outer-spin-button,
+.number-input-wrapper input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.ctrl-btn {
+    width: 60px;
+    /* 100% maior que botões padrão */
+    height: 55px;
+    /* Altura total do input */
+    background: #f1f5f9;
+    border: none;
+    color: #1e3a8a;
+    font-size: 1.5rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ctrl-btn:hover {
+    background: #e2e8f0;
+}
+
+.ctrl-btn.minus {
+    border-right: 1px solid #e2e8f0;
+}
+
+.ctrl-btn.plus {
+    border-left: 1px solid #e2e8f0;
 }

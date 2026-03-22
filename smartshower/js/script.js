@@ -62,6 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
             alert('Menu mobile ativado! (Implementação de overlay necessária para navegação completa)');
         });
     }
+
     // FAQ Accordion
     const faqItems = document.querySelectorAll('.faq-item');
     faqItems.forEach(item => {
@@ -69,7 +70,6 @@ document.addEventListener('DOMContentLoaded', () => {
         question.addEventListener('click', () => {
             const isActive = item.classList.contains('active');
 
-            // Close all other items
             faqItems.forEach(otherItem => {
                 otherItem.classList.remove('active');
             });
@@ -80,35 +80,80 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // ROI Calculator
+    // ROI Calculator Section
     const banhistasInput = document.getElementById('banhistas-dia');
     const valorInput = document.getElementById('valor-banho');
+    const metroCubicoInput = document.getElementById('valor-metro-cubico');
     const revenueDisplay = document.getElementById('total-revenue');
+    const dailyProfitDisplay = document.getElementById('daily-profit');
     const profitDisplay = document.getElementById('total-profit');
 
-    const calculateROI = () => {
+    function calculateROI() {
+        if (!banhistasInput || !valorInput || !metroCubicoInput) return;
+
         const banhistas = parseInt(banhistasInput.value) || 0;
-        const valor = parseFloat(valorInput.value) || 0;
+        const valorSugerido = parseFloat(valorInput.value) || 0;
+        const valorMetroCubico = parseFloat(metroCubicoInput.value) || 0;
 
-        const monthlyRevenue = banhistas * valor * 30;
-        // Estimativa simplificada: 70% de lucro (considerando repasse e custos fixos)
-        const monthlyProfit = monthlyRevenue * 0.7;
+        // Custo da Água (12L por m³ / 1000)
+        const custoAgua = (12 * valorMetroCubico) / 1000;
 
-        revenueDisplay.innerText = monthlyRevenue.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-        profitDisplay.innerText = monthlyProfit.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-    };
+        // Lucro por minuto (Preço Sugerido - Custo da Água) - 25% PaguePix - 1% Taxa
+        const lucroPorMinuto = (valorSugerido - custoAgua) - (valorSugerido * 0.25) - (valorSugerido * 0.01);
 
-    if (banhistasInput && valorInput) {
-        banhistasInput.addEventListener('input', calculateROI);
-        valorInput.addEventListener('input', calculateROI);
-        calculateROI(); // Initial calc
+        // Resultados
+        const dailyProfit = banhistas * lucroPorMinuto;
+        const monthlyProfit = 30 * dailyProfit;
+        const monthlyRevenue = banhistas * valorSugerido * 30;
+
+        // Update UI
+        if (revenueDisplay) revenueDisplay.innerText = monthlyRevenue.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+        if (dailyProfitDisplay) dailyProfitDisplay.innerText = dailyProfit.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+        if (profitDisplay) profitDisplay.innerText = monthlyProfit.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
     }
+
+    // Custom UI buttons for +/-
+    document.querySelectorAll('.ctrl-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const targetId = btn.getAttribute('data-target');
+            const input = document.getElementById(targetId);
+            if (!input) return;
+
+            const step = parseFloat(input.getAttribute('step')) || 1;
+            const min = parseFloat(input.getAttribute('min')) || 0;
+            let val = parseFloat(input.value) || 0;
+
+            if (btn.classList.contains('plus')) {
+                val += step;
+            } else {
+                val = Math.max(min, val - step);
+            }
+
+            // Formatting: integer for banhistas, float for values
+            input.value = (step < 1) ? val.toFixed(2) : val.toFixed(0);
+
+            // Trigger calculation
+            calculateROI();
+        });
+    });
+
+    // Direct input change handling
+    [banhistasInput, valorInput, metroCubicoInput].forEach(input => {
+        if (input) {
+            input.addEventListener('input', calculateROI);
+        }
+    });
+
+    // Initial run
+    calculateROI();
 });
 
+// Helper for WhatsApp
 function sendToWhatsApp() {
     const name = document.getElementById('name').value.trim();
     const whatsapp = document.getElementById('whatsapp').value.trim();
-    const barraca = document.getElementById('barraca') ? document.getElementById('barraca').value.trim() : '';
+    const barracaInput = document.getElementById('barraca');
+    const barraca = barracaInput ? barracaInput.value.trim() : '';
 
     if (!name || !whatsapp) {
         alert("Por favor, preencha os campos obrigatórios.");
@@ -116,8 +161,6 @@ function sendToWhatsApp() {
     }
 
     const message = `Olá! Sou o(a) ${name} da barraca ${barraca}. Vi o Programa de Parceiros Fundadores do SmartShower e gostaria de mais informações. Meu WhatsApp é ${whatsapp}.`;
-
     const url = `https://wa.me/5585991351205?text=${encodeURIComponent(message)}`;
-
     window.open(url, '_blank');
 }
