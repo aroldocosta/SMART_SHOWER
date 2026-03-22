@@ -250,6 +250,50 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Contact Form (Lead Capture)
+    document.getElementById('contact-form')?.addEventListener('submit', async function (e) {
+        e.preventDefault();
+        const name = document.getElementById('name').value;
+        const barraca = document.getElementById('barraca').value;
+        const whatsapp = document.getElementById('whatsapp').value;
+
+        const btn = this.querySelector('button');
+        const originalText = btn.innerText;
+        btn.innerText = 'Processando...';
+        btn.disabled = true;
+
+        try {
+            const response = await fetch('https://paguepix.oficinabr.com/api/auth/public/leads', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name, barraca, whatsapp })
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                // Redirect to demo login in the frontend with session params
+                const params = new URLSearchParams({
+                    token: data.token,
+                    userId: data.userId,
+                    role: data.role,
+                    name: data.name,
+                    partnerId: data.partnerId || '',
+                    partnerName: data.partnerName || ''
+                });
+                window.location.href = `https://paguepix.oficinabr.com/auth/demo-login?${params.toString()}`;
+            } else {
+                throw new Error('Erro ao salvar lead');
+            }
+        } catch (error) {
+            console.error(error);
+            // Fallback to WhatsApp if API fails
+            sendToWhatsApp();
+        } finally {
+            btn.innerText = originalText;
+            btn.disabled = false;
+        }
+    });
+
     // Initial run
     updateWaterCost();
     calculateROI();
