@@ -985,3 +985,252 @@ section {
         margin-bottom: 40px;
     }
 }
+
+/* Dashboard Section */
+.dashboard {
+    background: #fff;
+    padding: 100px 0;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 80px;
+    align-items: center;
+}
+
+.dashboard-features {
+    list-style: none;
+    margin-top: 35px;
+}
+
+.dashboard-features li {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.dashboard-features i {
+    font-size: 1.5rem;
+    color: var(--primary);
+    margin-top: 5px;
+}
+
+.browser-mockup {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.browser-mockup.luxury {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.15);
+}
+
+.browser-header {
+    background: #f1f3f4;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.browser-address {
+    margin-left: 20px;
+    background: #fff;
+    font-size: 0.75rem;
+    padding: 2px 15px;
+    border-radius: 4px;
+    color: #94a3b8;
+    flex-grow: 1;
+    max-width: 200px;
+}
+
+.browser-header .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #ccc;
+}
+
+.browser-header .dot:nth-child(1) {
+    background: #ff5f56;
+}
+
+.browser-header .dot:nth-child(2) {
+    background: #ffbd2e;
+}
+
+.browser-header .dot:nth-child(3) {
+    background: #27c93f;
+}
+
+/* Dashboard Simplified (Latest Reference) */
+.dashboard-ui.simplified {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    min-height: 500px;
+    background: #fff;
+}
+
+.ui-header-pague {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.ui-logo-pague {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 800;
+    color: var(--primary);
+    font-size: 1.1rem;
+}
+
+.ui-header-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.theme-toggle {
+    background: #f8fafc;
+    padding: 8px 12px;
+    border-radius: 10px;
+    font-size: 0.8rem;
+    color: #94a3b8;
+    display: flex;
+    gap: 10px;
+}
+
+.menu-btn-ui {
+    background: #f8fafc;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    color: var(--accent);
+}
+
+.ui-main-pague {
+    padding: 40px 30px;
+}
+
+.content-header-pague {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+.content-header-pague h3 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--accent);
+}
+
+.content-header-pague p {
+    font-size: 0.9rem;
+    color: #64748b;
+}
+
+.btn-solicitar {
+    background: #eff6ff;
+    color: #3b82f6;
+    border: 1px solid #dbeafe;
+    padding: 12px 25px;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-solicitar:hover {
+    background: #3b82f6;
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+.ui-table-pague-container {
+    background: #fff;
+    border: 1px solid #f1f5f9;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 40px;
+}
+
+.ui-table-pague {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.ui-table-pague th {
+    text-align: left;
+    padding: 20px;
+    font-size: 0.8rem;
+    color: #94a3b8;
+    background: #fdfdfd;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.ui-table-pague td {
+    padding: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--accent);
+    border-bottom: 1px solid #f8fafc;
+}
+
+.status-pill-pague {
+    display: inline-block;
+    padding: 6px 15px;
+    background: #f0fdf4;
+    color: #16a34a;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    border: 1px solid #dcfce7;
+}
+
+.ui-footer-pague {
+    border-top: 1px solid #f1f5f9;
+    padding-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    color: #94a3b8;
+}
+
+.footer-pague-links {
+    display: flex;
+    gap: 20px;
+}
+
+
+
+@media (max-width: 991px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+        gap: 60px;
+        text-align: center;
+    }
+
+    .dashboard-features li {
+        text-align: left;
+    }
+}
