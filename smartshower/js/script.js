@@ -90,8 +90,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const faixaGroup = document.getElementById('faixa-consumo-group');
 
     const revenueDisplay = document.getElementById('total-revenue');
-    const dailyProfitDisplay = document.getElementById('daily-profit');
     const profitDisplay = document.getElementById('total-profit');
+    const marginDisplay = document.getElementById('margin-percent');
 
     const TARIFFS = {
         'comercial-2': {
@@ -152,19 +152,20 @@ document.addEventListener('DOMContentLoaded', () => {
         const dailyProfit = banhistas * lucroPorMinuto;
         const monthlyProfit = 30 * dailyProfit;
         const monthlyRevenue = banhistas * valorSugerido * 30;
+        const marginPercent = monthlyRevenue > 0 ? (monthlyProfit / monthlyRevenue) * 100 : 0;
 
         // Update UI with color feedback for losses
         if (revenueDisplay) {
             revenueDisplay.innerText = monthlyRevenue.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
             revenueDisplay.classList.toggle('negative', monthlyRevenue < 0);
         }
-        if (dailyProfitDisplay) {
-            dailyProfitDisplay.innerText = dailyProfit.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-            dailyProfitDisplay.classList.toggle('negative', dailyProfit < 0);
-        }
         if (profitDisplay) {
             profitDisplay.innerText = monthlyProfit.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
             profitDisplay.classList.toggle('negative', monthlyProfit < 0);
+        }
+        if (marginDisplay) {
+            marginDisplay.innerText = `${Math.max(0, marginPercent).toFixed(0)}%`;
+            marginDisplay.classList.toggle('negative', marginPercent < 0);
         }
     }
 
