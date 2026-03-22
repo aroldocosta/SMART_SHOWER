@@ -62,19 +62,60 @@ document.addEventListener('DOMContentLoaded', () => {
             alert('Menu mobile ativado! (Implementação de overlay necessária para navegação completa)');
         });
     }
+    // FAQ Accordion
+    const faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        question.addEventListener('click', () => {
+            const isActive = item.classList.contains('active');
+
+            // Close all other items
+            faqItems.forEach(otherItem => {
+                otherItem.classList.remove('active');
+            });
+
+            if (!isActive) {
+                item.classList.add('active');
+            }
+        });
+    });
+
+    // ROI Calculator
+    const banhistasInput = document.getElementById('banhistas-dia');
+    const valorInput = document.getElementById('valor-banho');
+    const revenueDisplay = document.getElementById('total-revenue');
+    const profitDisplay = document.getElementById('total-profit');
+
+    const calculateROI = () => {
+        const banhistas = parseInt(banhistasInput.value) || 0;
+        const valor = parseFloat(valorInput.value) || 0;
+
+        const monthlyRevenue = banhistas * valor * 30;
+        // Estimativa simplificada: 70% de lucro (considerando repasse e custos fixos)
+        const monthlyProfit = monthlyRevenue * 0.7;
+
+        revenueDisplay.innerText = monthlyRevenue.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+        profitDisplay.innerText = monthlyProfit.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    };
+
+    if (banhistasInput && valorInput) {
+        banhistasInput.addEventListener('input', calculateROI);
+        valorInput.addEventListener('input', calculateROI);
+        calculateROI(); // Initial calc
+    }
 });
 
 function sendToWhatsApp() {
     const name = document.getElementById('name').value.trim();
     const whatsapp = document.getElementById('whatsapp').value.trim();
-    const barraca = document.getElementById('barraca').value.trim();
+    const barraca = document.getElementById('barraca') ? document.getElementById('barraca').value.trim() : '';
 
-    if (!name || !whatsapp || !barraca) {
-        alert("Por favor, preencha todos os campos.");
+    if (!name || !whatsapp) {
+        alert("Por favor, preencha os campos obrigatórios.");
         return;
     }
 
-    const message = `Olá, meu nome é ${name} e eu gostaria de conhecer o SmartShower. Meu WhatsApp é ${whatsapp} e o nome da minha barraca é ${barraca}.`;
+    const message = `Olá! Sou o(a) ${name} da barraca ${barraca}. Vi o Programa de Parceiros Fundadores do SmartShower e gostaria de mais informações. Meu WhatsApp é ${whatsapp}.`;
 
     const url = `https://wa.me/5585991351205?text=${encodeURIComponent(message)}`;
 
