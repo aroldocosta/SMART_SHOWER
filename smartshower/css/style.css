@@ -1238,8 +1238,8 @@ section {
 /* ROI CALCULATOR REBUILD - REFERENCE IMAGE MATCH */
 .roi-calculator .calculator-body {
     display: grid;
-    grid-template-columns: 1fr 1.5fr;
-    gap: 60px;
+    grid-template-columns: 30% 70%;
+    gap: 30px;
     align-items: center;
 }
 
@@ -1345,10 +1345,13 @@ section {
 
 .number-input-wrapper input[type="number"] {
     border: none !important;
+    border-left: 1px solid #e2e8f0 !important;
+    border-right: 1px solid #e2e8f0 !important;
     text-align: center;
     font-weight: 700;
-    padding: 15px 5px !important;
-    max-width: 80px !important;
+    padding: 15px 10px !important;
+    flex-grow: 1;
+    min-width: 100px;
     margin: 0 !important;
     -moz-appearance: textfield;
 }
@@ -1361,9 +1364,7 @@ section {
 
 .ctrl-btn {
     width: 60px;
-    /* 100% maior que botões padrão */
     height: 55px;
-    /* Altura total do input */
     background: #f1f5f9;
     border: none;
     color: #1e3a8a;
@@ -1380,9 +1381,6 @@ section {
     background: #e2e8f0;
 }
 
-.ctrl-btn.minus {
-    border-right: 1px solid #e2e8f0;
-}
 
 .ctrl-btn.plus {
     border-left: 1px solid #e2e8f0;
