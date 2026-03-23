@@ -1337,6 +1337,52 @@ section {
         grid-template-columns: 1fr;
         gap: 40px;
     }
+
+    .roi-calculator .number-input-wrapper {
+        width: 100%;
+    }
+}
+
+@media (max-width: 530px) {
+    .container {
+        padding: 0 1rem;
+    }
+
+    .ctrl-btn {
+        width: 42px;
+        height: 48px;
+    }
+
+    .calculator-wrapper {
+        padding: 25px 10px;
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .number-input-wrapper {
+        width: 100% !important;
+    }
+
+    .number-input-wrapper input {
+        padding: 12px 5px !important;
+        font-size: 1rem;
+    }
+
+    .result-value-large {
+        font-size: 2rem;
+    }
+    
+    .result-grid-profit {
+        gap: 10px;
+    }
+    
+    .result-card-profit {
+        padding: 15px 5px;
+    }
+    
+    .result-card-profit .result-value {
+        font-size: 1.2rem;
+    }
 }
 
 /* CUSTOM NUMBER INPUTS STYLE */
@@ -1359,9 +1405,11 @@ section {
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     padding: 15px 10px !important;
     flex-grow: 1;
-    min-width: 100px;
+    width: 0 !important; /* Forces flex-grow to handle width and overrides global 100% */
+    min-width: 0; /* Allows shrinking on very small screens */
     margin: 0 !important;
     -moz-appearance: textfield;
+    appearance: textfield;
 }
 
 .number-input-wrapper input::-webkit-outer-spin-button,
@@ -1383,6 +1431,7 @@ section {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-shrink: 0; /* Prevents buttons from being squished */
 }
 
 .ctrl-btn:hover {
