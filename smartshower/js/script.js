@@ -84,9 +84,25 @@ document.addEventListener('DOMContentLoaded', () => {
     const banhistasInput = document.getElementById('banhistas-dia');
     const valorInput = document.getElementById('valor-banho');
     const metroCubicoInput = document.getElementById('valor-metro-cubico');
+    const categoriaSelect = document.getElementById('categoria-tarifa');
+    const faixaCheckbox = document.getElementById('faixa-consumo');
+    const manualGroup = document.getElementById('manual-cost-group');
+    const faixaGroup = document.getElementById('faixa-consumo-group');
+
     const revenueDisplay = document.getElementById('total-revenue');
-    const dailyProfitDisplay = document.getElementById('daily-profit');
     const profitDisplay = document.getElementById('total-profit');
+    const marginDisplay = document.getElementById('margin-percent');
+
+    const TARIFFS = {
+        'comercial-2': {
+            'base': 35.75, // 0-50m3
+            'extra': 56.55  // >50m3
+        },
+        'comercial-popular': {
+            'base': 30.22, // 21-50m3
+            'extra': 53.86  // >50m3
+        }
+    };
 
     // BRL Formatting Helpers
     const parseFormattedValue = (val) => {
@@ -98,6 +114,27 @@ document.addEventListener('DOMContentLoaded', () => {
         return val.toFixed(decimals).replace('.', ',');
     };
 
+    function updateWaterCost() {
+        if (!categoriaSelect || !faixaCheckbox || !metroCubicoInput) return;
+
+        const categoria = categoriaSelect.value;
+        const isExtra = faixaCheckbox.checked;
+
+        if (categoria === 'manual') {
+            if (manualGroup) manualGroup.style.display = 'block';
+            if (faixaGroup) faixaGroup.style.display = 'none';
+        } else {
+            if (manualGroup) manualGroup.style.display = 'none';
+            if (faixaGroup) faixaGroup.style.display = 'block';
+            const cost = isExtra ? TARIFFS[categoria].extra : TARIFFS[categoria].base;
+            metroCubicoInput.value = cost.toFixed(2).replace('.', ',');
+        }
+        calculateROI();
+    }
+
+    if (categoriaSelect) categoriaSelect.addEventListener('change', updateWaterCost);
+    if (faixaCheckbox) faixaCheckbox.addEventListener('change', updateWaterCost);
+
     function calculateROI() {
         if (!banhistasInput || !valorInput || !metroCubicoInput) return;
 
@@ -108,26 +145,27 @@ document.addEventListener('DOMContentLoaded', () => {
         // Custo da Água (12L por m³ / 1000)
         const custoAgua = (12 * valorMetroCubico) / 1000;
 
-        // Lucro por minuto (Preço Sugerido - Custo da Água) - 25% PaguePix - 1% Taxa
-        const lucroPorMinuto = (valorSugerido - custoAgua) - (valorSugerido * 0.25) - (valorSugerido * 0.01);
+        // Lucro por minuto (Preço Sugerido - Custo da Água) - 30% Retenção (SaaS + Gateway)
+        const lucroPorMinuto = (valorSugerido - custoAgua) - (valorSugerido * 0.30);
 
         // Resultados
         const dailyProfit = banhistas * lucroPorMinuto;
         const monthlyProfit = 30 * dailyProfit;
         const monthlyRevenue = banhistas * valorSugerido * 30;
+        const marginPercent = monthlyRevenue > 0 ? (monthlyProfit / monthlyRevenue) * 100 : 0;
 
         // Update UI with color feedback for losses
         if (revenueDisplay) {
             revenueDisplay.innerText = monthlyRevenue.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
             revenueDisplay.classList.toggle('negative', monthlyRevenue < 0);
         }
-        if (dailyProfitDisplay) {
-            dailyProfitDisplay.innerText = dailyProfit.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-            dailyProfitDisplay.classList.toggle('negative', dailyProfit < 0);
-        }
         if (profitDisplay) {
             profitDisplay.innerText = monthlyProfit.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
             profitDisplay.classList.toggle('negative', monthlyProfit < 0);
+        }
+        if (marginDisplay) {
+            marginDisplay.innerText = `${Math.max(0, marginPercent).toFixed(0)}%`;
+            marginDisplay.classList.toggle('negative', marginPercent < 0);
         }
     }
 
@@ -212,7 +250,52 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Contact Form (Lead Capture)
+    document.getElementById('contact-form')?.addEventListener('submit', async function (e) {
+        e.preventDefault();
+        const name = document.getElementById('name').value;
+        const barraca = document.getElementById('barraca').value;
+        const whatsapp = document.getElementById('whatsapp').value;
+
+        const btn = this.querySelector('button');
+        const originalText = btn.innerText;
+        btn.innerText = 'Processando...';
+        btn.disabled = true;
+
+        try {
+            const response = await fetch('https://paguepix.oficinabr.com/api/auth/public/leads', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name, barraca, whatsapp })
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                // Redirect to demo login in the frontend with session params
+                const params = new URLSearchParams({
+                    token: data.token,
+                    userId: data.userId,
+                    role: data.role,
+                    name: data.name,
+                    partnerId: data.partnerId || '',
+                    partnerName: data.partnerName || ''
+                });
+                window.location.href = `https://paguepix.oficinabr.com/auth/demo-login?${params.toString()}`;
+            } else {
+                throw new Error('Erro ao salvar lead');
+            }
+        } catch (error) {
+            console.error(error);
+            // Fallback to WhatsApp if API fails
+            sendToWhatsApp();
+        } finally {
+            btn.innerText = originalText;
+            btn.disabled = false;
+        }
+    });
+
     // Initial run
+    updateWaterCost();
     calculateROI();
 });
 
