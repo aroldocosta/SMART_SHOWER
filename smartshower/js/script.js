@@ -30,30 +30,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Form submission (demo)
-    const form = document.getElementById('contact-form');
-    if (form) {
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const btn = form.querySelector('button');
-            const originalText = btn.innerText;
-
-            btn.innerText = 'Enviando...';
-            btn.disabled = true;
-
-            setTimeout(() => {
-                btn.innerText = 'Sucesso! Entraremos em contato.';
-                btn.style.background = '#27ae60';
-                form.reset();
-
-                setTimeout(() => {
-                    btn.innerText = originalText;
-                    btn.style.background = '';
-                    btn.disabled = false;
-                }, 3000);
-            }, 1500);
-        });
-    }
 
     // Mobile Menu Toggle (Simplified)
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
@@ -263,10 +239,10 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.disabled = true;
 
         try {
-            const response = await fetch('https://paguepix.oficinabr.com/api/auth/public/leads', {
+            const response = await fetch('https://api.paguepix.oficinabr.com/auth/public/leads', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ name, barraca, whatsapp })
+                body: JSON.stringify({ name, email: '', barraca, whatsapp })
             });
 
             if (response.ok) {
