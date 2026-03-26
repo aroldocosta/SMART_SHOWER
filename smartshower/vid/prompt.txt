@@ -1,0 +1,145 @@
+VERSAO 01
+---------
+Cena 1: Início e Escaneamento
+    Visão: Uma cena externa ensolarada em uma praia limpa. Um chuveiro de praia robusto está no poste central. Uma placa rústica, mas limpa, está fixada no poste, mostrando o logotipo Pix e um código QR visível e proeminente.
+    Ação: Uma jovem de beleza natural (cabelo solto e atraente) entra em cena. Ela veste roupas de praia. Ela para em frente ao chuveiro e olha para a placa. Ela pega seu smartphone e o aponta para o código QR.
+    Gráficos (Pop-up): Um pop-up gráfico limpo no canto superior direito mostra o ícone de celular digitalizando o QR Code (igual ao da Etapa 1 da imagem).
+    Áudio (Narrador Masculino): "O Cliente escaneia o QR Code visível no sistema."
+
+Cena 2: Pagamento
+    Visão: Close na jovem e em seu smartphone. Vemos a tela do celular dela.
+    Ação: Ela toca na tela do celular para simular a transação. A interface do app do banco (genérica) mostra brevemente o ícone de confirmação do Pix e um "check" (igual ao ícone da Etapa 2 da imagem). Ela sorri levemente e abaixa o celular.
+    Gráficos (Pop-up): Um pop-up gráfico limpo no canto superior direito mostra o ícone de celular Pix (igual ao da Etapa 2 da imagem).
+    Áudio (Narrador Masculino): "Realiza o pagamento rápido e seguro via pix."
+
+Cena 3: Liberação da Água
+    Visão: Plano médio da jovem sob a saída do chuveiro, olhando para cima com expectativa.
+    Ação: Ela aguarda com expectativa. Um gráfico de cronômetro visual rústico aparece no canto da tela e faz uma contagem regressiva de 4 segundos (4... 3... 2... 1...). Exatamente no zero, o chuveiro libera um jato forte e fresco de água.
+    Gráficos (Pop-up): Um pop-up gráfico limpo no canto superior direito mostra o ícone de cadeado destrancado com gotas (igual ao da Etapa 3 da imagem).
+    Áudio (Narrador Masculino): "O banho é liberado automaticamente."
+
+Cena 4: Satisfação e Conclusão
+    Visão: Plano médio da jovem, agora com a água do chuveiro caindo sobre ela.
+    Ação: Ela tira os óculos escuros e os pendura na canga. Sua expressão muda para uma de imensa e intensa satisfação, com os olhos fechados por um momento sob a água fresca. Ela se vira para a câmera (quarta parede).
+    Ação Final: Ela abre os olhos e dá um sorriso genuíno e radiante diretamente para a câmera, a água pingando de seu rosto e canga. A câmera faz um pequeno zoom-out para mostrá-la feliz sob o chuveiro.
+    Gráficos (Pop-up): Um pop-up gráfico limpo no canto superior direito mostra o ícone do cronômetro com o 'X' (igual ao da Etapa 4 da imagem).
+    Áudio (Narrador Masculino): "4. Encerra. O timer controlado desliga a água e encerra o fluxo."
+    Finalização: O vídeo fade out com um pequeno logotipo "Smart Shower" e mostrando a logo da imagem anexada.
+
+Cena 5: Logomarca
+    A logomarca SmartShower surge em fade in finaliza o video
+
+VERSAO 02
+---------
+Roteiro: Smart Shower (Versão Otimizada)
+
+Cena 1: Início e Escaneamento
+    Visão: Praia ensolarada. Chuveiro robusto no poste central com placa rústica exibindo o logotipo Pix e QR Code proeminente.
+    Ação: Jovem de beleza natural em trajes de praia discretos para diante do chuveiro e aponta o smartphone para o código.
+    Gráficos: Pop-up no canto superior mostra o ícone de celular escaneando o QR Code (conforme Etapa 1 da IMAGEM 1).
+    Áudio (Narrador): "1. Escaneia. Cliente escaneia o QR Code visível no sistema."
+
+Cena 2: Pagamento
+    Visão: Close na tela do smartphone da jovem.
+    Ação: Ela toca na tela simulando a transação. A interface exibe confirmação Pix e um "check". Ela sorri e abaixa o celular.
+    Gráficos: Pop-up mostra o ícone de celular com logo Pix e check (conforme Etapa 2 da IMAGEM 1).
+    Áudio (Narrador): "2. Paga. Realiza o pagamento rápido e seguro via Pix."
+
+Cena 3: Liberação da Água
+    Visão: Plano médio da jovem sob o chuveiro, olhando para cima com expectativa.
+    Ação: Cronômetro rústico na tela faz contagem regressiva (4... 3... 2... 1...). No zero, o jato de água forte e fresco é liberado.
+    Gráficos: Pop-up mostra o ícone de cadeado destrancado com gotas (conforme Etapa 3 da IMAGEM 1).
+    Áudio (Narrador): "3. Libera. A Chuveirada é destravada e liberada automaticamente."
+
+Cena 4: Satisfação e Conclusão
+    Visão: Jovem sob a água caindo.
+    Ação: Ela pendura os óculos na canga, fecha os olhos em satisfação e sorri radiante para a câmera. Zoom-out final mostrando sua felicidade.
+    Gráficos: Pop-up mostra o ícone do cronômetro com 'X' (conforme Etapa 4 da IMAGEM 1).
+    Áudio (Narrador): "4. Encerra. O timer controlado desliga a água e encerra o fluxo."
+
+Finalização
+    A logomarca SmartShower surge em fade in finaliza o video (conforme LOGOMARCA da imagem).
+
+VERSAO 03
+---------
+
+Roteiro: Smart Shower (Versão Otimizada)
+
+Cena 1: Início e Escaneamento
+    Visão: Praia ensolarada. Chuveiro robusto no poste central com placa de acrilico exibindo o logotipo Pix e QR Code proeminente.
+    Ação: Jovem de beleza natural em trajes de praia para diante do chuveiro e aponta o smartphone para o código.
+    Gráficos: Pop-up no canto superior mostra o ícone de celular escaneando o QR Code (conforme imagem howitworks01.png).
+    Áudio (Narrador): "Escaneia. Cliente escaneia o QR Code visível no sistema."
+    Textos: Todos traduzidos para portugues do Brasil.
+
+Cena 2: Pagamento
+    Visão: Close na tela do smartphone da jovem.
+    Ação: Ela toca na tela simulando a transação. A interface exibe confirmação Pix e um "check". Ela sorri e abaixa o celular.
+    Gráficos: Pop-up mostra o ícone de celular com logo Pix e check (conforme imagem howitworks02.png).
+    Áudio (Narrador): "Realiza o pagamento rápido e seguro via Pix."
+    Textos: Todos traduzidos para portugues do Brasil.
+
+Cena 3: Liberação da Água
+    Visão: Plano médio da jovem sob o chuveiro, olhando para cima com expectativa.
+    Ação: Cronômetro rústico na tela faz contagem regressiva (4... 3... 2... 1...). No zero, o jato de água forte e fresco é liberado.
+    Gráficos: Pop-up mostra o ícone de cadeado destrancado com gotas (conforme imagem howitworks03.png).
+    Áudio (Narrador): "O Banho é liberado automaticamente."
+    Textos: Todos traduzidos para portugues do Brasil.
+
+Cena 4: Satisfação e Conclusão
+    Visão: Jovem sob a água caindo.
+    Ação: Ela pendura os óculos na canga, fecha os olhos em satisfação e sorri radiante para a câmera. Zoom-out final mostrando sua felicidade.
+    Gráficos: Pop-up mostra o ícone do cronômetro com 'X' (conforme imagem howitworks04.png).
+    Áudio (Narrador): "O timer do controlador desliga a água e encerra o fluxo."
+    Textos: Todos traduzidos para portugues do Brasil.
+
+Finalização
+    Ação: Fade out suave exibindo centralizado o logotipo do guarda-sol azul com o texto "SmartShower" (conforme imagem logomarca.png).
+    Textos: Todos traduzidos para portugues do Brasil.
+
+
+Wisky
+-----
+== Personagem ==
+Jovem de beleza natural (cabelo solto e atraente). Ela veste roupas
+de praia discretas e comportadas. A jovem tem a aparencia atraente
+e da sinais de que se divertiu o dia todo ja com sinais de cançaso
+e a caminho de casa.
+
+Cena 1: Início e Escaneamento
+    Visão: Uma cena externa ensolarada em uma praia limpa. Um chuveiro de praia robusto está no poste central. Uma placa de acrilico de uns 30 x 20cm, mas limpa, está fixada no poste, mostrando o logotipo Pix e um código QR visível e proeminente.
+    Ação: Uma jovem de beleza natural (cabelo solto e atraente) entra em cena. Ela veste roupas de praia. Ela para em frente ao chuveiro e olha para a placa. Ela pega seu smartphone e o aponta para o código QR.
+    Gráficos (Pop-up): Um pop-up gráfico limpo no canto superior direito mostra o ícone de celular digitalizando o QR Code (conforme imagem howitworks01.png).
+    Áudio (Narrador Masculino): "O Cliente escaneia o QR Code visível no sistema."
+    Textos: Todos traduzidos para portugues do Brasil.
+
+Cena 2: Pagamento
+    Visão: Close na jovem e em seu smartphone. Vemos a tela do celular dela.
+    Ação: A jovem segura o celular como quem está fazendo o pagamento no aplicativo do banco, a tela do celular deve ficar de frente para a jovem e para o espectador mostrar apenas as costas do aparelho. Ela sorri levemente e abaixa o celular.
+    Gráficos (Pop-up): Um pop-up gráfico limpo no canto superior direito mostra o ícone de celular Pix (conforme imagem howitworks02.png).
+    Áudio (Narrador Masculino): "Realiza o pagamento rápido e seguro via pix."
+    Textos: Todos traduzidos para portugues do Brasil.
+
+Cena 3: Liberação da Água
+    Visão: Plano médio da jovem sob a saída do chuveiro, olhando para cima com expectativa.
+    Ação: A jovem apos tirar a canga e a bolsa aguarda com expectativa. O chuveiro libera um jato forte e fresco de água em quanto a jovem sorri com satisfação.
+    Gráficos (Pop-up): Um pop-up gráfico limpo no canto superior direito mostra o ícone de cadeado destrancado com gotas (conforme imagem howitworks03.png).
+    Áudio (Narrador Masculino): "O banho é liberado automaticamente."
+    Textos: Todos traduzidos para portugues do Brasil.
+
+Cena 4: Satisfação e Conclusão
+    Visão: Plano médio da jovem, agora com a água do chuveiro caindo sobre ela.
+    Ação: A jovem olha para a quarta parede com rosto deimensa e intensa satisfação, com os olhos abertos se vira para a câmera (quarta parede) com sinal de aprovação.
+    Ação Final: Ela abre os olhos e dá um sorriso genuíno e radiante diretamente para a câmera. A câmera faz um pequeno zoom-out para mostrá-la feliz sob o chuveiro.
+    Gráficos (Pop-up): Um pop-up gráfico limpo no canto superior direito mostra o ícone do cronômetro (conforme imagem howitworks04.png).
+    Áudio (Narrador Masculino): "Smart Shower, refrescante, tecnológico, inteligente."
+    Textos: Todos traduzidos para portugues do Brasil.
+
+
+Cena 5: Finalização
+    Ação: Fade out suave exibindo centralizado o logotipo do guarda-sol azul com o texto "SmartShower" (conforme imagem logomarca.png).
+    Coloque apenas a logomarca na imagem.
+    Textos: Todos traduzidos para portugues do Brasil.
+
+
+
