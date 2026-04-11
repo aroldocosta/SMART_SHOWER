@@ -270,6 +270,37 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // ROI Calculator Modal Logic
+    const roiModal = document.getElementById('roi-modal');
+    const openRoiBtns = document.querySelectorAll('.open-roi-modal');
+    const closeRoiBtn = document.getElementById('close-roi-modal');
+
+    if (roiModal && openRoiBtns.length > 0 && closeRoiBtn) {
+        const openModal = (e) => {
+            if (e) e.preventDefault();
+            roiModal.style.display = 'flex';
+            setTimeout(() => {
+                roiModal.classList.add('active');
+            }, 10);
+            document.body.style.overflow = 'hidden'; // prevent scrolling
+        };
+
+        const closeModal = () => {
+            roiModal.classList.remove('active');
+            setTimeout(() => {
+                roiModal.style.display = 'none';
+            }, 300);
+            document.body.style.overflow = '';
+        };
+
+        openRoiBtns.forEach(btn => btn.addEventListener('click', openModal));
+        closeRoiBtn.addEventListener('click', closeModal);
+        
+        roiModal.addEventListener('click', (e) => {
+            if (e.target === roiModal) closeModal();
+        });
+    }
+
     // Initial run
     updateWaterCost();
     calculateROI();

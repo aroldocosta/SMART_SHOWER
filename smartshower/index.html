@@ -60,11 +60,10 @@
                 <div class="hero-video-box" data-reveal="right">
                     <div class="video-container shadow-premium">
                         <!-- Placeholder para Vídeo do Fundador / Demonstração Técnica -->
-                        <iframe src="https://www.youtube-nocookie.com/embed/9zIPumm3DnU" 
-                            title="SmartShower - Demonstração técnica" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                            referrerpolicy="strict-origin-when-cross-origin" 
-                            allowfullscreen></iframe>
+                        <iframe src="https://www.youtube-nocookie.com/embed/9zIPumm3DnU"
+                            title="SmartShower - Demonstração técnica"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                     </div>
                     <p class="image-disclaimer text-center">Demonstração técnica do acionamento via Pix.</p>
                 </div>
@@ -205,10 +204,11 @@
             </div>
         </section>
 
-        <!-- ROI Calculator Section -->
-        <section id="roi-calculator" class="roi-calculator">
-            <div class="container">
-                <div class="calculator-wrapper" data-reveal="scale">
+        <!-- ROI Calculator Modal -->
+        <div id="roi-modal" class="modal-overlay" style="display: none;">
+            <div class="modal-container">
+                <div class="calculator-wrapper" style="position: relative;">
+                    <button id="close-roi-modal" class="btn-close-modal"><i class="fas fa-times"></i></button>
                     <div class="calculator-header">
                         <h2>Quanto sua barraca pode <span>Lucrar?</span></h2>
                         <p>Simule a economia e a receita extra para o seu estabelecimento.</p>
@@ -267,38 +267,130 @@
                         </div>
 
                         <div class="calculator-results-stack">
-                            <div class="result-card-revenue">
-                                <h3>Receita Mensal Bruta</h3>
-                                <div class="result-value-large" id="total-revenue">R$ 750,00</div>
-                                <p>Faturamento total sem descontos</p>
-                            </div>
 
                             <div class="result-grid-profit">
                                 <div class="result-card-profit">
-                                    <h3>Lucro Líquido Estimado (Mês)</h3>
+                                    <h3>Lucro Líquido<br>Estimado (Mês)</h3>
                                     <div class="result-value" id="total-profit">R$ 0,00</div>
                                 </div>
                                 <div class="result-card-profit highlight-margin">
-                                    <h3>Margem do Estabelecimento</h3>
+                                    <h3>Margem do<br>Estabelecimento</h3>
                                     <div class="result-value" id="margin-percent">0%</div>
-                                    <p style="font-size: 0.8rem; opacity: 0.8; margin-top: 5px;">de retorno livre de
-                                        esforço</p>
                                 </div>
                             </div>
-
-                            <div class="calculator-footer-note"
-                                style="text-align: left; background: #fffbe6; padding: 20px; border-radius: 12px; border-left: 5px solid #fadb14; margin-top: 25px;">
-                                <p style="margin-bottom: 10px; color: #1e293b;"><strong>Observações:</strong></p>
-                                <p style="margin-bottom: 8px;">1 - Estimativa para banhos de 1 minuto com vazão media de
-                                    12 litros/min</p>
-                                <p style="margin-bottom: 8px;">2 - O <strong>Lucro Líquido Estimado</strong> já desconta
-                                    o custo da água e a taxa de 30% da plataforma, que cobre o hardware, manutenção,
-                                    servidores e custos de processamento do Pix.</p>
-                                <p style="margin-bottom: 8px;">3 - A simulação considera o <strong>repasse mensal
-                                        gratuito</strong>. Saques extras possuem tarifa fixa de R$ 3,00 por operação.
-                                </p>
-                                <p>4 - Não inclui impostos do CNPJ e consumo de energia (baixíssimo).</p>
+                        </div>
+                    </div>
+                    <div class="calculator-footer-note">
+                        <h3 style="margin-bottom: 15px; color: #1e293b; font-size: 1.2rem;">Observações:</h3>
+                        <div class="footer-note-columns" style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+                            <div class="footer-note-col">
+                                <p style="margin-bottom: 15px; color: #64748b;">1 - Estimativa para banhos de 1 minuto com vazão media de 12 litros/min</p>
+                                <p style="margin-bottom: 0px; color: #64748b;">2 - O <strong>Lucro Líquido Estimado</strong> já desconta o custo da água e a taxa de 30% da plataforma, que cobre o hardware, manutenção, servidores e custos de processamento do Pix.</p>
                             </div>
+                            <div class="footer-note-col">
+                                <p style="margin-bottom: 15px; color: #64748b;">3 - A simulação considera o <strong>repasse mensal gratuito</strong>. Saques extras possuem tarifa fixa de R$ 3,00 por operação.</p>
+                                <p style="margin-bottom: 0px; color: #64748b;">4 - Não inclui impostos do CNPJ e consumo de energia (baixíssimo).</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Plans / Pricing Reference -->
+        <section id="profit-plans" class="profit-plans section-padding" style="background-color: #636363;">
+            <div class="container">
+                <div class="section-header text-center" data-reveal="bottom">
+                    <h2 style="color: white;">Potencial de <span style="color: #F4A460;">Lucro Líquido</span></h2>
+                    <p style="color: #e0e0e0;">Baseado em uma média de 10 usos diários (considerando Tarifa Comercial II
+                        da Cagece e consumo &lt; 50 m³/mês).</p>
+                </div>
+                <div class="pricing-grid">
+                    <!-- Card Diário -->
+                    <div class="pricing-card" data-reveal="bottom">
+                        <div class="pricing-header" style="background-color: #564195;">
+                            <h4>LUCRO DIÁRIO</h4>
+                            <h2>R$ 13,21</h2>
+                            <p> USO DE 1 MIN (R$ 2,50) </p>
+                        </div>
+                        <div class="pricing-body">
+                            <ul class="pricing-features">
+                                <li><i class="fas fa-check" style="color: #4CAF50;"></i>
+                                    <span class="pricing-label">3 Min (R$ 6,50):</span><br>
+                                    <span class="pricing-value">R$ 32,63</span>
+                                </li>
+                                <li><i class="fas fa-check" style="color: #4CAF50;"></i>
+                                    <span class="pricing-label">5 Min (R$ 9,60):</span><br>
+                                    <span class="pricing-value">R$ 45,75</span>
+                                </li>
+                                <li><i class="fas fa-check" style="color: #4CAF50;"></i>
+                                    <span class="pricing-label">10 Min (R$ 18,50):</span><br>
+                                    <span class="pricing-value">R$ 86,60</span>
+                                </li>
+                            </ul>
+                            <button class="btn btn-pricing open-roi-modal"
+                                style="background-color: #E85D04; border: none; width: 100%; cursor: pointer;">
+                                OUTROS CENÁRIOS
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Card Mensal -->
+                    <div class="pricing-card" data-reveal="bottom" data-delay="100">
+                        <div class="pricing-header" style="background-color: #80A82A;">
+                            <h4>LUCRO MENSAL</h4>
+                            <h2>R$ 396,30</h2>
+                            <p> USO DE 1 MIN (R$ 2,50) </p>
+                        </div>
+                        <div class="pricing-body">
+                            <ul class="pricing-features">
+                                <li><i class="fas fa-check" style="color: #4CAF50;"></i>
+                                    <span class="pricing-label">3 Min (R$ 6,50):</span><br>
+                                    <span class="pricing-value">R$ 978,90</span>
+                                </li>
+                                <li><i class="fas fa-check" style="color: #4CAF50;"></i>
+                                    <span class="pricing-label">5 Min (R$ 9,60):</span><br>
+                                    <span class="pricing-value">R$ 1.372,50</span>
+                                </li>
+                                <li><i class="fas fa-check" style="color: #4CAF50;"></i>
+                                    <span class="pricing-label">10 Min (R$ 18,50):</span><br>
+                                    <span class="pricing-value">R$ 2.598,00</span>
+                                </li>
+                            </ul>
+                            <button class="btn btn-pricing open-roi-modal"
+                                style="background-color: #E85D04; border: none; width: 100%; cursor: pointer;">
+                                OUTROS CENÁRIOS
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Card Anual -->
+                    <div class="pricing-card" data-reveal="bottom" data-delay="200">
+                        <div class="pricing-header" style="background-color: #D96924;">
+                            <h4>LUCRO ANUAL</h4>
+                            <h2>R$ 4.755,60</h2>
+                            <p> USO DE 1 MIN (R$ 2,50) </p>
+                        </div>
+                        <div class="pricing-body">
+                            <ul class="pricing-features">
+                                <li><i class="fas fa-check" style="color: #4CAF50;"></i>
+                                    <span class="pricing-label">3 Min (R$ 6,50):</span><br>
+                                    <span class="pricing-value">R$ 11.746,80</span>
+                                </li>
+                                <li><i class="fas fa-check" style="color: #4CAF50;"></i>
+                                    <span class="pricing-label">5 Min (R$ 9,60):</span><br>
+                                    <span class="pricing-value">R$ 16.470,00</span>
+                                </li>
+                                <li><i class="fas fa-check" style="color: #4CAF50;"></i>
+                                    <span class="pricing-label">10 Min (R$ 18,50):</span><br>
+                                    <span class="pricing-value">R$ 31.176,00</span>
+                                </li>
+                            </ul>
+                            <button class="btn btn-pricing open-roi-modal"
+                                style="background-color: #E85D04; border: none; width: 100%; cursor: pointer;">
+                                OUTROS CENÁRIOS
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -454,7 +546,6 @@
             <div class="footer-contact">
                 <h4>Contato</h4>
                 <p><i class="fab fa-whatsapp"></i> (85) 99135-1205</p>
-                <p><i class="fas fa-envelope"></i> contato@oficinabr.com</p>
             </div>
         </div>
         <div class="footer-bottom container">
