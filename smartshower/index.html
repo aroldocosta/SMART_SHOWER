@@ -516,6 +516,9 @@
                     <h2>Entre para o <span>Programa de Parceiros Fundadores</span></h2>
                     <p>Estamos selecionando 5 barracas parceiras para o nosso Programa de Lançamento: <span>Instalação Padrão</span> sem custo para o litoral de Fortaleza e Região Metropolitana.</p>
                     <form class="pilot-form" id="contact-form">
+                        <!-- Honeypot anti-spam field (invisible to users) -->
+                        <input type="text" id="website_check" name="website_check" style="display:none !important;" tabindex="-1" autocomplete="off">
+                        
                         <input type="text" id="name" placeholder="Seu Nome" required>
                         <input type="text" id="barraca" placeholder="Nome da Barraca" required>
                         <input type="tel" id="whatsapp" placeholder="Seu WhatsApp" required>
@@ -554,13 +557,13 @@
                     <li><a href="politica-de-privacidade.html">Política de Privacidade</a></li>
                 </ul>
             </div>
-            <div class="footer-contact">
+            <div class="footer-contact" id="contact-wrapper">
                 <h4>Contato</h4>
-                <p><i class="fab fa-whatsapp"></i> (85) 99135-1205</p>
+                <!-- Dynamic contact info generated via JS to prevent scraping -->
             </div>
         </div>
         <div class="footer-bottom container">
-            <p>CNPJ: 17.628.380/0001-06 | Av. Emilia Gonçalves, 633 - Olavo Oliveira, Fortaleza-CE</p>
+            <p id="legal-info-container"></p>
             <p style="margin-top: 10px;">&copy; 2026 SmartShower. Todos os direitos reservados.</p>
         </div>
     </footer>

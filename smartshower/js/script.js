@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const pageLoadedAt = Date.now();
     // Reveal animations on scroll
     const revealElements = document.querySelectorAll('[data-reveal]');
 
@@ -229,6 +230,22 @@ document.addEventListener('DOMContentLoaded', () => {
     // Contact Form (Lead Capture)
     document.getElementById('contact-form')?.addEventListener('submit', async function (e) {
         e.preventDefault();
+
+        // Anti-bot check: honeypot field
+        const honeypot = document.getElementById('website_check')?.value;
+        if (honeypot) {
+            console.warn('Spam detected via honeypot');
+            alert('Formulário enviado com sucesso!');
+            return;
+        }
+
+        // Anti-bot check: submission speed (humans take at least 3 seconds)
+        if (Date.now() - pageLoadedAt < 3000) {
+            console.warn('Spam detected via submission speed');
+            alert('Formulário enviado com sucesso!');
+            return;
+        }
+
         const name = document.getElementById('name').value;
         const barraca = document.getElementById('barraca').value;
         const whatsapp = document.getElementById('whatsapp').value;
@@ -301,6 +318,38 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Render dynamic legal info to prevent static web scrapers
+    const legalContainer = document.getElementById('legal-info-container');
+    if (legalContainer) {
+        // Character codes for: CNPJ: 17.628.380/0001-06 | Av. Emilia Gonçalves, 633 - Olavo Oliveira, Fortaleza-CE
+        const encLegal = [67, 78, 80, 74, 58, 32, 49, 55, 46, 54, 50, 56, 46, 51, 56, 48, 47, 48, 48, 48, 49, 45, 48, 54, 32, 124, 32, 65, 118, 46, 32, 69, 109, 105, 108, 105, 97, 32, 71, 111, 110, 231, 97, 108, 118, 101, 115, 44, 32, 54, 51, 51, 32, 45, 32, 79, 108, 97, 118, 111, 32, 79, 108, 105, 118, 101, 105, 114, 97, 44, 32, 70, 111, 114, 116, 97, 108, 101, 122, 97, 45, 67, 69];
+        legalContainer.textContent = String.fromCharCode(...encLegal);
+    }
+
+    // Render dynamic contact (WhatsApp phone number) to prevent scraping
+    const contactWrapper = document.getElementById('contact-wrapper');
+    if (contactWrapper) {
+        const phoneFormatted = String.fromCharCode(40, 56, 53, 41, 32, 57, 57, 49, 51, 53, 45, 49, 50, 48, 53); // (85) 99135-1205
+        const phoneDigits = String.fromCharCode(53, 53, 56, 53, 57, 57, 49, 51, 53, 49, 50, 48, 53); // 5585991351205
+        
+        const p = document.createElement('p');
+        const link = document.createElement('a');
+        link.href = `https://wa.me/${phoneDigits}`;
+        link.target = '_blank';
+        link.style.color = 'inherit';
+        link.style.textDecoration = 'none';
+        
+        const icon = document.createElement('i');
+        icon.className = 'fab fa-whatsapp';
+        icon.style.marginRight = '10px';
+        icon.style.color = 'var(--secondary)';
+        
+        link.appendChild(icon);
+        link.appendChild(document.createTextNode(phoneFormatted));
+        p.appendChild(link);
+        contactWrapper.appendChild(p);
+    }
+
     // Initial run
     updateWaterCost();
     calculateROI();
@@ -319,6 +368,7 @@ function sendToWhatsApp() {
     }
 
     const message = `Olá! Sou o(a) ${name} da barraca ${barraca}. Vi o Programa de Parceiros Fundadores do SmartShower e gostaria de mais informações. Meu WhatsApp é ${whatsapp}.`;
-    const url = `https://wa.me/5585991351205?text=${encodeURIComponent(message)}`;
+    const phoneDigits = String.fromCharCode(53, 53, 56, 53, 57, 57, 49, 51, 53, 49, 50, 48, 53); // 5585991351205
+    const url = `https://wa.me/${phoneDigits}?text=${encodeURIComponent(message)}`;
     window.open(url, '_blank');
 }

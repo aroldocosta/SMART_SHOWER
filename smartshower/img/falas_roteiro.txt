@@ -1,0 +1,35 @@
+SmartShower
+------------------------------------
+a) Falas
+1 - O cliente escaneia o QR code.
+2 - Faz o pagamento de forma rápida, fácil e segura.
+3 - O chuveiro é liberado automaticamente, refrescante e restaurador.
+4 - Smartshower: Refrescante, Tecnológico, Inteligente
+
+b) Roteiro
+Similar ao video de refrencia em https://oficinabr.com/smartshower
+
+SmartVac
+------------------------------------
+a) Falas
+1 - O cliente escaneia o QR code.
+2 - Faz o pagamento de forma rápida, fácil e segura.
+3 - O aspirador é liberado automaticamente, potente e seguro.
+4 - SmartVac: Potente, Tecnológico, Inteligente
+
+b) Roteiro
+1 - Veiculo para em frente ao SmartVac
+2 - Motorista escaneira um QrCode coloco do aspirador
+3 - O aspirador entra em funcionamento
+4 - O motorista usa no seu carro par limpar sujeiras no banco
+5 - O motorista olha pra camera com a mangueira do aspirador na mao e um Porlegar indicando aprovação.
+
+
+Observações:
+1 - As imagens howitworks devem ser exibidas a cada fala, ver video de refrencia.
+2 - Aceito sugestoes de melhorias
+
+/img/howitworks01.png
+/img/howitworks02.png
+/img/howitworks03.png
+/img/howitworks04.png
